@@ -1,0 +1,54 @@
+Neural Networks 
+
+Input Layer             Hidden Layer            Output Layer
+
+######          _______   ######              
+######   \-----/------    ###### \
+######    \   /           ######  \ 
+        \  \ /                     \             ######
+         \ _________      ######    \            ######
+          /\/  \_______   ###### ------------    ######
+         / /\             ######    /
+######  / /  \                     /
+######  /     \           ######  /
+######  ______________    ###### /
+               \______    ######
+
+
+Input Layer:
+    - Take the multiple inputs for that will be used to determine the output
+    Example: If we are trying to predict the next word in a sentence, 
+             we can take the last two words and each will be an input layer 
+    
+Hidden Layer:
+    - The input layer connects to the hidden layer with the weights that will be used to find another layer or the output 
+      via another set of weights that are newly adjusted. 
+    Example: We will see another word that can be closely related via the weights
+
+Output Layer: 
+    - The find word that is found via the new weights and the hidden layers between 
+    Example: The final word that was found to predict the next word in the sentence
+
+*~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~*
+
+How many weights are there in this NN? - Count the arrows
+2 inputs x 3 hidden layers = 6 weights 
+3 hidden layers x 1 output = 3 weights
+
+= 9 total weights
+
+*~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~*
+
+How many matrices are needed to store all the weights for this model, and what is the size of each?
+
+2 matrices: one 2x3 and one 3x1
+
+*~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~*
+
+In a neural network for predicting whether someone develops diabetes, what is the main purpose of a Sigmoid activation?
+
+Sigmoid activation is used to determine a category for the result.
+It is on a 0-1 scale where the closer to 1 means the more likely it is that and the closer to 0 means the more likely it is that.
+Ensures the model outputs a probability
+
+*~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~**~~~~~*

@@ -1,0 +1,60 @@
+Training NN Models
+
+Steps to Training the Model: Follow the same steps for future NNs 
+
+1. Make an instance of the model/class
+2. Define the loss function.
+    We will use Cross Entropy Loss for Classification. - loss_function(model_prediction, labels) 
+        - labels is 0s or 1s on what is the percentage for the true answer
+    MSE would be for predicting a specific number // price of an uber or how tall in the future
+3. Optimizer = torch.optim.Adam(model.parameters()): This will perform the Gradient Decent (Adam)
+    - parameters: we are passing in the weights 
+4. Define the epochs = how many times are we passing/iterating to train the model. 
+    - We do not want too many epochs vs too little for over/underfitting 
+5. train_dataloader: iterator that will be used to train based on this dataset (tuples)
+
+Training Body:
+6. Call the forward method: model_prediction = model(images)
+7. We want to recalculate the derivatives by doing: optimizer.zero_grad()
+8. Calculating the loss of the trained data set: loss = loss_function(model_prediction, labels) 
+9. Calcualte every derivative necessary for gradient decent: 
+    - Based on the NN size, might have a lot to calculate
+    - loss.backward(): store the necessary derivatives: derivatives for each weight for gradient descent is calculated
+10. Getting the new wights and going a step in the right direction for the right weights:
+    - optimizer.step(): new_w = old_w - derivative * learning_rate 
+
+
+
+Code:
+
+model = DigitReconition()
+
+loss_function = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters())
+
+epochs = 5
+
+for epoch in range(epochs):
+    for images, labels in train_dataloader:
+        images = images.view(images.shape[0], 784)
+        
+        # Training Body
+        
+        model_prediction = model(images)
+        optimizer.zero_grad()
+        loss = loss_function(model_prediction, labels)
+        loss.backward()
+        optimizer.step()
+        
+model.eval()
+
+for images, labels in test_dataloader:
+    images = images.view(images.shape[0], 784)
+    
+    model_prediction = model(images)
+    max, idx = torch.max(model_prediction, dim = 1)
+    for i in range (len(images)):
+        plt.imshow(images[i].view(28, 28))
+        plt.show()
+        print(idx[i].item())
+    break
