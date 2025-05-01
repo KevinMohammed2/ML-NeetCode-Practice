@@ -94,7 +94,6 @@ example_datapoint = torch.randn(1, 4) # 1x4 tensor
 # print(model(example_datapoint))
 
 
-
 from jaxtyping import Float
 
 
